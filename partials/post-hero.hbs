@@ -1,0 +1,67 @@
+<div class="post-hero{{#unless feature_image}} no-img{{/unless}}{{#if featured}} featured{{/if}}">
+  <div class="post-hero__content">
+    <h1 class="post-hero__title text-center">{{title}}</h1>
+
+    {{!-- Post card Author/s --}}
+    <div class="post-hero__author flex-cc m-b-lg">
+      {{#has author="count:<2"}}
+        {{#primary_author}}
+          <a class="flex items-center" href="{{url}}" aria-label="{{name}}">
+            <span class="post-hero__author-img{{#if profile_image}} img{{/if}}">
+              {{#if profile_image}}
+                <img 
+                  src="{{img_url profile_image size="xs"}}" 
+                  alt="{{name}}" 
+                  src="{{> img-placeholder}}" 
+                />
+              {{else}}
+                {{>icon name="user" size="sm"}}
+              {{/if}}
+            </span>
+            <div class="m-l-sm fw-500">
+              {{name}}
+            </div>
+          </a>
+        {{/primary_author}}
+      {{else}}
+        <div class="flex items-center">
+          {{#foreach authors}}
+            <a href="{{url}}" class="post-hero__author-img{{#if profile_image}} img{{/if}} nr-{{@number}}" 
+              title="{{name}}" aria-label="{{name}}">
+              {{#if profile_image}}
+                <img 
+                  src="{{img_url profile_image size="xs"}}" 
+                  alt="{{name}}" 
+                  src="{{> img-placeholder}}"
+                />
+              {{else}}
+                {{>icon name="user" size="sm"}}
+              {{/if}}
+            </a>
+          {{/foreach}}
+        </div>
+        <div class="m-l-sm fw-500">
+          {{#authors separator=", "}}{{/authors}}
+        </div>
+      {{/has}}
+    </div>
+  </div>
+
+  {{!-- Post image --}}
+  {{#if feature_image}}
+    <figure class="post-hero__img">
+      <img
+        class=""
+        srcset="{{img_url feature_image size="s"}} 300w,
+                {{img_url feature_image size="m"}} 600w,
+                {{img_url feature_image size="l"}} 1000w,
+                {{img_url feature_image size="xl"}} 2000w"
+        sizes="(max-width: 800px) 400px,
+                (max-width: 1170px) 700px,
+                1400px"
+        src="{{img_url feature_image size="s"}}"
+        alt="{{title}}"
+      />
+    </figure>
+  {{/if}}
+</div>

@@ -1,0 +1,55 @@
+.subscribe {
+  background-color: var(--color-secondary);
+  padding: var(--gap);
+  border-radius: var(--global-radius);
+
+  @media (--mq-sm) {
+    padding: var(--gap-lg);
+  }
+
+  @media (--mq-md) {
+    padding: var(--gap-xl);
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    color: var(--color-dark);
+  }
+
+  &__descr {
+    color: var(--color-grey-darker);
+  }
+
+  form {
+    display: flex;
+    width: 100%;
+    max-width: 25rem;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  input {
+    margin-bottom: 0;
+    background-color: var(--color-bg);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
+    height: 50px;
+    border: 1px solid var(--color-border);
+    border-radius: 2rem;
+  }
+
+  button {
+    min-width: 8rem;
+    position: absolute;
+    padding: 1em;
+    padding: var(--gap);
+    height: 50px;
+    right: 0px;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    color: var(--color-light);
+    background-color: var(--color-primary-dark);
+  }
+}

@@ -1,0 +1,83 @@
+.notify {    
+  position: fixed;
+  z-index: 999;
+  top: -60px;
+  left: 0;
+  right: 0;    
+  background-color: var(--color-bg-reverse);
+  color: var(--color-text-reverse);
+  padding: var(--gap) 0;
+  height: 60px;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-700);
+  color: var(--color-white);
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+
+  @mixin attention {
+    outline: none;
+  }
+
+  &.is-closed {
+    top: -60px !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all var(--trans-default);
+  }
+
+  &.notify-error,
+  &.notify-billing-cancel {
+    background-color: var(--color-error);
+  }
+
+  &.notify-success,
+  &.notify-signin,
+  &.notify-signup,
+  &.notify-subscribe,
+  &.notify-checkout,
+  &.notify-billing-success {
+    background-color: var(--color-success);
+  }
+
+  &__close {
+    padding: 5px;
+    width: 25px;
+    height: 25px;
+    background-color: var(--color-light);
+    border-radius: var(--global-radius-round);
+    color: var(--color-dark);
+    cursor: pointer;
+
+    @mixin attention {
+      background-color: var(--color-white);
+    }
+
+    .icon {
+      stroke-width: 3px;
+      pointer-events: none;
+    }
+  }
+
+  .container {
+    height: 30px;
+  }
+}
+
+form[data-members-form].success .notify-success,
+form[data-members-form].error .notify-error {
+  visibility: visible;
+  opacity: 1;
+  top: 0;
+}
+
+.signin-success .notify-signin,
+.signup-success .notify-signup,
+.subscribe-success .notify-subscribe,
+.checkout-success .notify-checkout,
+.billing-success .notify-billing-success,
+.billing-cancel .notify-billing-cancel {
+  visibility: visible;
+  opacity: 1;
+  top: 0;
+}

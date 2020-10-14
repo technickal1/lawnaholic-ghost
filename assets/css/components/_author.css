@@ -1,0 +1,28 @@
+.author-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--global-radius);
+  transition: box-shadow var(--trans-default);
+
+  @mixin attention {
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,.05);
+  }
+
+  &__img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    border-radius: var(--global-radius-round);
+  }
+
+  a {
+    @mixin attention {
+      color: var(--color-primary);
+    }
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+}

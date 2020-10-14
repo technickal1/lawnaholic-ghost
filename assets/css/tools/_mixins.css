@@ -1,0 +1,39 @@
+/* Mixins */
+@define-mixin attention {
+  &:hover,
+  &:active,
+  &:focus {
+    @mixin-content;
+  }
+}
+
+@define-mixin overlay {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-dark);
+    opacity: 0.25;
+  }
+}
+
+@define-mixin overlay-colored {
+  position: relative;
+  
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: var(--global-radius);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-grey-dark), var(--color-secondary));
+    opacity: 0.7;
+  }
+}

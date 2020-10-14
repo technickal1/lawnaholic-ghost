@@ -1,0 +1,91 @@
+{{!< default}}
+
+{{!-- Hero Sections --}}
+<section class="section hero border-top-1{{#if @site.cover_image}} has-img{{/if}}">
+  <div class="container wrapper w-100">
+    <div class="hero__inner flex">
+      
+
+      {{!-- Site cover image --}}
+      {{#if @site.cover_image}}
+        <img class="hero__img"
+          srcset="{{img_url @site.cover_image size="s"}} 300w,
+                  {{img_url @site.cover_image size="m"}} 600w,
+                  {{img_url @site.cover_image size="l"}} 1000w"
+          sizes="(max-width: 1000px) 50vw, 700px"
+          src="{{img_url @site.cover_image size="s"}}"
+          {{!-- src="{{> img-placeholder}}" --}}
+          alt="{{@site.title}}"/>
+      {{/if}}
+    </div>
+  </div>
+</section>
+
+<div class="container wrapper">
+  {{!-- Latest Posts --}}
+  <div class="section">
+    <div class="flex flex-cc m-b">
+      {{!-- Tag List --}}
+      <div class="tag-list-wrap flex-1">
+      {{#get "tags" order="count.posts desc" limit="5"}}
+        <div class="tag-list">
+          {{#foreach tags}}
+            <a class="tag-item" href="{{url}}">{{name}}</a>
+          {{/foreach}}
+        </div>
+      {{/get}}
+      </div>
+    
+      {{!-- Grid/List buttons --}}
+      <button class="toggle__item btn--grid p-sm m-r-sm js-grid-btn"
+        aria-label="{{t "Grid"}}" title="{{t "Grid"}}" onclick="setView('grid')">
+        {{> icon name="grid" size="sm"}}
+      </button>
+      <button class="toggle__item btn--list p-sm js-list-btn"
+        aria-label="{{t "List"}}" title="{{t "List"}}" onclick="setView('list')">
+        {{> icon name="list" size="sm"}}
+      </button>
+    </div>
+
+    {{!-- Posts --}}
+    <div class="grid grid-col-3 grid-color post-container">
+      {{#foreach posts visibility="all"}}
+        {{> post-card img=true }}
+      {{/foreach}}
+    </div>
+
+    {{!-- Load more posts --}}
+    <div class="col-xs-12 center-xs m-t-lg">
+      <button class="btn btn--wide btn--shadow btn--brand js-load-more" onclick="loadMorePosts(this)">
+        {{t "Load more posts"}}
+      </button>
+    </div>
+  </div>
+
+  {{!-- Main Tags --}}
+  <div class="section">
+    <div class="section__title m-b">{{t "Explore topics"}}</div>
+
+    {{#get "tags" include="count.posts" order="count.posts desc" limit="7"}}
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-xl-4 featured-tag">
+          {{#foreach tags to="1"}}
+            {{> tag-card class="h-100" img=true}}
+          {{/foreach}}
+        </div>
+
+        <div class="col-xs-12 col-md-6 col-xl-4 tag-wrap">
+          {{#foreach tags from="2" to="4" columns="3"}}
+            {{> tag-card}}
+          {{/foreach}}
+        </div>
+
+        <div class="col-xs-12 col-xl-4 tag-wrap">
+          {{#foreach tags from="5" to="7"}}
+            {{> tag-card}}
+          {{/foreach}}
+        </div>
+      </div>
+    {{/get}}
+  </div>
+</div>

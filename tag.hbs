@@ -1,0 +1,67 @@
+{{!< default}}
+
+{{!-- Tag Hero --}}
+{{#tag}}
+<section class="section hero border-top-1{{#if feature_image}} has-img{{/if}}">
+  <div class="container wrapper {{#if feature_image}} w-100{{/if}}">
+    <div class="hero__inner flex flex-cc">
+      <div class="hero__content flex-1">
+        {{!-- Title and description --}}
+        <h1 class="hero__title{{#unless feature_image}} text-center{{/unless}}">{{name}}</h1>
+        <div class="hero__descr m-b{{#unless feature_image}} text-center{{/unless}}">{{description}}</div>
+        <div class="hero__descr m-b fw-700{{#unless feature_image}} text-center{{/unless}}">
+          {{plural ../pagination.total empty=(t 'No posts') singular=(t '1 post') plural=(t '% posts')}}
+        </div>
+      </div>
+
+      {{#if feature_image}}
+        <img class="lazyload hero__img"
+            data-srcset="{{img_url feature_image size="s"}} 300w,
+                    {{img_url feature_image size="m"}} 600w,
+                    {{img_url feature_image size="l"}} 1000w"
+            data-sizes="(max-width: 1000px) 50vw, 700px"
+            data-src="{{img_url feature_image size="m"}}"
+            src="{{> img-placeholder}}"
+            alt="{{name}}" 
+        />
+      {{/if}}
+    </div>
+  </div>
+</section>
+{{/tag}}
+
+<div class="container wrapper">
+  {{#if posts}}
+  <div class="section">
+    <div class="flex flex-cc m-b">
+      <div class="section__title">{{t "Latest Posts"}}</div>
+
+      <div class="flex-1"></div>
+    
+      {{!-- Grid/List buttons --}}
+      <button class="toggle__item btn--grid p-sm m-r-sm js-grid-btn" 
+        aria-label="{{t "Grid"}}" title="{{t "Grid"}}" tabindex="0"
+        onclick="setView('grid')">
+        {{> icon name="grid" size="sm"}}
+      </button>
+      <button class="toggle__item btn--list p-sm js-list-btn" 
+        aria-label="{{t "List"}}" title="{{t "List"}}"
+        onclick="setView('list')">
+        {{> icon name="list" size="sm"}}
+      </button>
+    </div>
+
+    {{!-- Posts --}}
+    <div class="grid grid-col-3 post-container">
+      {{#foreach posts visibility="all"}}
+        {{> post-card img=true}}
+      {{/foreach}}
+    </div>
+    <div class="col-xs-12 center-xs m-t-lg">
+      <button class="btn btn--wide btn--shadow btn--brand js-load-more" onclick="loadMorePosts(this)">
+        {{t "Load more posts"}}
+      </button>
+    </div>
+  </div>
+  {{/if}}
+</div>

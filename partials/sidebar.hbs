@@ -1,0 +1,74 @@
+<aside class="sidebar">
+  <div>
+<!-- Ezoic - sidebar-top - sidebar -->
+<div id="ezoic-pub-ad-placeholder-121"> </div>
+<!-- End Ezoic - sidebar-top - sidebar -->
+  </div>
+
+  {{!-- Sidebar featured posts --}}
+  {{#is "post"}}
+    {{#get "posts" filter="featured:true+id:-{{id}}" limit="5" include="authors,tags" as |featured|}}
+      {{#if featured}}
+      <div class="section__title m-b">{{t "Featured posts"}}</div>
+      <div class="sidebar__section">
+        {{#foreach featured  visibility="all"}}
+          <article class="sidebar__story">
+            {{#if feature_image}}
+              <a href="{{url}}" class="sidebar__story-image m-r">
+                <img 
+                  class="lazyload" 
+                  alt="{{title}}" 
+                  data-src="{{img_url feature_image size="xs"}}"
+                  src="{{> img-placeholder}}"
+                />
+              </a>
+            {{/if}}
+            <h6 class="sidebar__story-title">
+              <a href="{{url}}">{{{title}}}</a>
+            </h6>
+          </article>
+        {{/foreach}}
+      </div>
+      {{/if}}
+    {{/get}}
+  {{/is}}
+
+  {{!-- Tags --}}
+  <div class="section__title m-b">{{t "Explore topics"}}</div>
+  <div class="sidebar__section">
+    {{#get "tags" limit="6" include="count.posts" order="count.posts desc"}}
+      {{#foreach tags}}
+        <a class="sidebar__tag" href="{{url}}" title="{{name}}" aria-label="{{name}}">
+          <h6 class="sidebar__tag-name">{{name}}</h6>
+          <div class="sidebar__tag-count">{{count.posts}}</div>
+        </a>
+      {{/foreach}}
+    {{/get}}
+  </div>
+
+  {{!-- Sidebar latest posts --}}
+  {{#is "post"}}
+    {{#get "posts" filter="featured:false+id:-{{id}}" limit="5" include="authors,tags" as |latest|}}
+    <div class="section__title m-b">{{t "Latest posts"}}</div>
+    <div class="sidebar__section">      
+      {{#foreach latest  visibility="all"}}
+        <article class="sidebar__story">
+          {{#if feature_image}}
+            <a href="{{url}}" class="sidebar__story-image m-r">
+              <img 
+                class="lazyload" 
+                alt="{{title}}" 
+                data-src="{{img_url feature_image size="xs"}}"
+                src="{{> img-placeholder}}"
+              />
+            </a>
+          {{/if}}
+          <h6 class="sidebar__story-title">
+            <a href="{{url}}">{{{title}}}</a>
+          </h6>
+        </article>
+      {{/foreach}}
+    </div>
+    {{/get}}
+  {{/is}}
+</aside>

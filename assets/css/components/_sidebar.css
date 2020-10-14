@@ -1,0 +1,108 @@
+/* Sidebar */
+.sidebar {
+  height: 100%;
+
+  &__section {
+    margin-bottom: var(--gap-lg);
+    padding: var(--gap);
+    border-radius: var(--global-radius);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-acc-1);
+  }
+
+  &__title {
+    margin-bottom: 0;
+    text-align: center;
+    color: var(--color-text-acc-2);
+  }
+
+  &__descr {
+    margin-bottom: var(--gap);
+    text-align: center;
+    color: var(--color-text-acc-3);
+  }
+
+  &__tag {
+    display: flex;
+    padding: var(--gap-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-acc-2);
+
+    &:first-of-type { 
+      padding-top: 0;
+    }
+
+    &:last-of-type { 
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    @mixin attention {
+      color: var(--color-primary);
+    }
+
+    &-name {
+      margin-bottom: 0;
+      font-weight: var(--font-weight-600);
+      color: inherit;
+      flex: 1;
+      font-size: 0.9rem;
+    }
+
+    &-count { 
+      font-weight: var(--font-weight-600); 
+      font-size: 0.9rem;
+      color: inherit;
+    }
+  }
+
+  .social {
+    justify-content: center;
+    color: var(--color-text-acc-2);
+
+    a {
+      @mixin attention {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  &__story {
+    display: flex;
+    margin-bottom: var(--gap);
+    padding-bottom: var(--gap);
+    border-bottom: 1px solid var(--color-border);
+
+    &:last-of-type {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  
+    &-title {
+      font-weight: var(--font-weight-600);
+      font-size: 0.9rem;
+      color: var(--color-text-acc-2);
+      flex: 1;
+      margin: 0;
+
+      @mixin attention {
+        color: var(--color-primary);
+      }
+    }
+
+    &-image {
+      height: calc(4 * var(--gap-rem));
+      width: calc(4 * var(--gap-rem));
+      
+      img {
+        margin: 0;
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--global-radius);
+      }
+    }
+  }
+}

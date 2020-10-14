@@ -1,0 +1,100 @@
+.user-menu {
+  position: absolute;    
+  right: 0;
+  top: 40px;
+  width: 220px;
+  background: var(--color-bg);
+  flex-direction: column;
+  display: none;
+  cursor: initial;
+  border: 1px solid var(--color-border);    
+  border-radius: var(--global-radius);
+  box-shadow: 0 10px 20px 2px rgba(0,0,0,0.05);
+
+  &.is-active {
+    display: flex;
+    visibility: visible;
+  }
+
+  @mixin attention {
+    display: flex;
+    visibility: visible;
+  }
+
+  i { margin-right: var(--gap-sm); }
+
+  .member-user {
+    display: flex;
+    padding: var(--gap);
+  }
+
+  .member-avatar {
+    img { 
+      display: block;
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  .member-name {
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-700);
+    line-height: 1;
+  }
+
+  .member-email {
+    font-size: 0.8rem;
+    color: var(--color-text-acc-2);
+  }
+
+  .signin-link,
+  .signup-link,
+  .signout-link,
+  .account-link,
+  .upgrade-link,
+  .btn--toggle {
+    display: flex;
+    padding: var(--gap);
+    border-top: 1px solid var(--color-border);
+    outline: none;
+
+    @mixin attention {
+      background-color: var(--color-bg-acc-1);
+      color: var(--color-primary);
+    }
+  }
+
+  .signup-link,
+  .upgrade-link {
+    background-color: var(--color-secondary-light);
+    color: var(--color-dark);
+
+    @mixin attention {
+      background-color: var(--color-secondary);
+    }
+  }
+
+  .upgrade-link {
+    @media (--mq-sm) {
+      display: none;
+    }
+  }
+
+  .btn-theme-toggle {
+    @media (--mq-md) {
+      display: none;
+    }
+  }
+}
+
+.btn--toggle {
+  line-height: 1;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-700);
+  color: var(--color-text-acc-2);
+
+  i { stroke-width: 2.5px; }
+
+  span { margin-left: calc(15px + var(--gap-sm)); }
+}

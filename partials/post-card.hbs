@@ -1,0 +1,109 @@
+{{!-- Post Card --}}
+<article class="post-card{{^if feature_image}} no-img{{/if}}{{#if featured}} featured{{/if}} {{post_class}}{{#if class}} {{class}}{{/if}}" 
+        {{#if primary_tag.accent_color}} data-tag-color="{{primary_tag.accent_color}}"{{/if}}> 
+  {{#if img}}
+    {{#if feature_image}}
+      <a class="post-card__img" href="{{url}}" title="{{title}}" aria-label="{{title}}">
+        <img class="lazyload"
+          data-srcset="{{img_url feature_image size="s"}} 300w,
+                  {{img_url feature_image size="m"}} 600w"
+          data-sizes="(max-width: 1000px) 50vw, 600px"
+          data-src="{{img_url feature_image size="l"}}"
+          src="{{> img-placeholder}}"
+          alt="{{title}}"
+        />
+      </a>
+    {{/if}}
+  {{/if}}
+
+  <div class="post-card__content">
+    {{!-- Post Card Header --}}
+    <div class="post-card__hdr flex m-b">
+      {{#if primary_tag}}
+        {{#primary_tag}}
+          <a class="tag-{{slug}} post-card__tag" href="{{url}}" aria-label="{{name}}" 
+          {{#if accent_color}} style="background-color: {{accent_color}};"{{/if}}>
+            {{name}}
+          </a>
+        {{/primary_tag}}
+      {{/if}}
+
+      <span class="visibility self-align-center">{{visibility}}</span>
+
+      <div class="flex-1"></div>
+
+      {{#if featured}}
+        <div class="post-card__featured flex flex-cc">{{> icon name="star" size="xs"}}</div>
+      {{/if}}
+    </div>
+
+    {{!-- Post Card Title --}}
+    <h2 class="post-card__title">
+      <a href="{{url}}" aria-label="{{title}}">{{title}}</a>
+    </h2>
+
+    {{!-- Post card Author/s --}}
+    <div class="post-card__author m-b">
+      {{#has author="count:<2"}}
+        {{#primary_author}}
+          <a class="flex items-center" href="{{url}}" aria-label="{{name}}">
+            <span class="post-card__author-img{{#if profile_image}} img{{/if}}">
+              {{#if profile_image}}
+                <img 
+                  class="lazyload" 
+                  data-src="{{img_url profile_image size="xxs"}}" 
+                  alt="{{name}}" 
+                  src="{{> img-placeholder}}"
+                />
+              {{else}}
+                {{>icon name="user" size="sm"}}
+              {{/if}}
+            </span>
+            <div class="m-l-sm fw-500">
+              {{name}}
+            </div>
+          </a>
+        {{/primary_author}}
+      {{else}}
+        <div class="flex items-center">
+          {{#foreach authors}}
+            <a href="{{url}}" class="post-card__author-img{{#if profile_image}} img{{/if}} nr-{{@number}}" 
+              title="{{name}}" aria-label="{{name}}">
+              {{#if profile_image}}
+                <img 
+                  class="lazyload" 
+                  data-src="{{img_url profile_image size="xxs"}}" 
+                  alt="{{name}}" 
+                  src="{{> img-placeholder}}"
+                />
+              {{else}}
+                {{>icon name="user" size="sm"}}
+              {{/if}}
+            </a>
+          {{/foreach}}
+        </div>
+        <div class="m-l-sm fw-500">
+          {{#authors separator=", "}}{{/authors}}
+        </div>
+      {{/has}}
+    </div>
+
+    <div class="post-card__exc m-b">
+      {{#if custom_excerpt}} 
+        {{custom_excerpt}} 
+      {{else}}
+        {{excerpt words="20"}}&hellip;
+      {{/if}}
+    </div>
+
+    <div class="flex-1"></div>
+
+    <div class="post-card__ftr">
+      <span>{{reading_time}}</span>
+      
+      <time datetime="{{date format='YYYY-MM-DD'}}" class="post-card__date">
+        {{date published_at timeago=""}}
+      </time>
+    </div>
+  </div>
+</article>

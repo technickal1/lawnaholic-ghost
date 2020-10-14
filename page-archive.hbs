@@ -1,0 +1,21 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+{{> page-hero}}
+
+<div class="container wrapper">
+  {{#get "posts" limit="all" order="published_at desc"}}
+    <article class="{{post_class}} content-wrap m-b-lg">
+      {{#foreach posts}}
+        <a href="{{url}}" class="archive-post p-t p-b border-top-1 flex items-center">
+          <time datetime="{{date published_at format="YYYY-MM-DD"}}" class="archive-post__date m-r">
+            {{date published_at format="DD MMM YYYY"}}
+          </time>
+          <h2 class="archive-post__title m-0 text-md color-txt-acc-2">{{title}}</h2>
+        </a>
+      {{/foreach}}
+    </article>
+  {{/get}}
+</div>
+{{/post}}

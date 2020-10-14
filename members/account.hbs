@@ -1,0 +1,143 @@
+{{!< ../default}}
+
+<div class="page__hdr flex flex-cc m-b-lg">
+  <h1>{{t "Your account"}}</h1>
+</div>
+
+<div class="container wrapper">
+  <div class="acnt">
+    {{#if @member.paid}}
+
+      {{!-- Logged in, paying member: Show acnt info --}}
+      <div class="acnt-box">
+        <p class="m-b-lg">{{t "Currently, you have an active acnt to all areas. You're all set, but if you need any help, get in touch with us and we'd be happy to help."}}</p>
+        {{#foreach @member.subscriptions}}
+          <div class="acnt-det flex flex-cc m-b-lg">
+            <div class="acnt-det__label">
+              <div class="acnt-det__name">{{t "Name"}}</div>
+              <div class="acnt-det__email">{{t "Email"}}</div>
+              <div class="acnt-det__plan">{{t "Your plan"}}</div>
+              <div class="acnt-det__status">{{t "Status"}}</div>
+              <div class="acnt-det__valid">{{t "Valid until"}}</div>
+            </div>
+            <div class="acnt-det__value">
+              <div class="acnt-det__name">{{@member.name}}</div>
+              <div class="acnt-det__email">{{@member.email}}</div>
+              <div class="acnt-det__plan">{{plan.currency_symbol}}{{price plan.amount}} {{plan.nickname}}</div>
+              <div class="acnt-det__status">{{status}}</div>
+              <div class="acnt-det__valid">{{date current_period_end format="MMMM DD, YYYY"}}</div> 
+            </div>
+          </div>
+
+          <div class="acnt__edit m-t-lg m-b-lg">
+            <a class="btn btn--brand btn--xs" href="javascript:"
+                data-members-edit-billing
+                data-members-success="/"
+                data-members-cancel="/"
+              >Edit billing info</a>
+
+            <span class="flex-1"></span>
+
+            {{cancel_link
+              class="btn btn--brand btn--xs btn--bordered"
+            }}
+          </div>
+        {{/foreach}}
+      </div>
+
+      {{#get "posts" limit="all" include="authors,tags" }}
+      <div class="section__title m-b">{{t "Members only content"}}</div>
+      
+      <div class="row">
+        {{#foreach posts visibility="paid"}}
+          <div class="col-xs-12 col-md-6 col-lg-4">
+            {{> post-card class="m-b-lg"}}
+          </div>
+        {{/foreach}}
+      </div>
+      {{/get}}
+
+    {{else if @member}}
+
+      {{!-- Logged in, not paying: Link to checkout --}}
+      <div class="acnt-box">
+        <p class="m-b-lg">{{t "Currently, you are subscribed to free updates. Unlock full access to see the entire library of members-only content & updates by subscribing to a paid plan."}}
+        </p>
+        <div class="acnt-det flex flex-cc m-b-lg">
+          <div class="acnt-det__label">
+            <div class="acnt-det__email">{{t "Email"}}</div>
+            <div class="acnt-det__plan">{{t "Your plan"}}</div>
+          </div>
+          <div class="acnt-det__value">
+            <div class="acnt-det__email">{{@member.email}}</div>
+            <div class="acnt-det__plan">{{t "Free"}}</div>
+          </div>
+        </div>
+      </div>
+
+      {{!-- Logged in, not paying: Check out --}}
+      <div class="checkout__form">
+        <div class="checkout__title m-b fw-800">{{t "Choose your plan"}}</div>
+        
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2 m-b-lg">
+            <div class="checkout-plan">
+              <header class="checkout-plan__hdr p-b border-bottom-1">
+                <h3 class="checkout-plan__title">{{t "Monthly"}}</h3>
+                <div class="checkout-plan__price">
+                  <sup>{{@price.currency_symbol}}</sup><strong>{{@price.monthly}}</strong>/{{t "m"}}
+                </div>
+              </header>
+              <div class="checkout-plan__content">
+                <ul class="list--unstyled">
+                  <li>{{>icon name="check" size="xs"}}{{t "Full access to all private posts"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Regular updates with new content"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Support independent publishing"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Simple, secure card payment"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Regular newsletters"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "No advertisement"}}</li>
+                </ul>
+                <a class="btn btn--brand btn--sm" 
+                  href="javascript:void(0)" data-members-plan="Monthly">
+                  {{t "Subscribe now"}}
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 m-b-lg">
+            <div class="checkout-plan">
+              <header class="checkout-plan__hdr p-b border-bottom-1">
+                <h3 class="checkout-plan__title">{{t "Yearly"}}</h3>
+                <div class="checkout-plan__price">
+                  <sup>{{@price.currency_symbol}}</sup><strong>{{@price.yearly}}</strong>/{{t "y"}}
+                </div>
+              </header>
+              <div class="checkout-plan__content">
+                <ul class="list--unstyled">
+                  <li>{{>icon name="check" size="xs"}}{{t "Full access to all private posts"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Regular updates with new content"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Support independent publishing"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Simple, secure card payment"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "Regular newsletters"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "No advertisement"}}</li>
+                  <li>{{>icon name="check" size="xs"}}{{t "One easy payment instead of 12!"}}</li>
+                </ul>
+                <a class="btn btn--brand btn--sm" 
+                  href="javascript:void(0)" data-members-plan="Yearly">
+                  {{t "Subscribe now"}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {{else}}
+
+      {{!-- Not logged in: Redirect to signin --}}
+      <script>window.location = '{{@site.url}}/signin/';</script>
+
+    {{/if}}
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<script>
+  // Dark/Light Theme Handling
+  let preferredTheme; 
+  if (config.color_scheme === 'preference') {
+    const preferredColorScheme = 
+    ( window.matchMedia 
+      && window.matchMedia('(prefers-color-scheme: dark)').matches
+    ) 
+    ? 'dark' 
+    : 'light'
+    preferredTheme = localStorage.getItem('USER_COLOR_SCHEME') || preferredColorScheme;
+  } else {
+    preferredTheme = localStorage.getItem('USER_COLOR_SCHEME') || config.color_scheme;
+  }
+  document.documentElement.setAttribute('data-color-scheme', preferredTheme);
+
+  // Grid/List View Handling
+  let preferredView = localStorage.getItem('USER_VIEW_TYPE') || config.view_type;
+  document.documentElement.setAttribute('data-view-type', preferredView);
+
+  // Grid columns setting
+  document.documentElement.setAttribute('data-grid-columns', config.grid_columns);
+  
+  // Global values needed
+  const global = {
+    pagination_current_page: parseInt('{{pagination.page}}'),
+    pagination_next_page: parseInt('{{pagination.next}}'),
+    pagination_next_page_link: '',
+    pagination_max_pages: parseInt('{{pagination.pages}}'), 
+    pagination_posts_per_page: parseInt('{{@config.posts_per_page}}'),
+  }
+</script>

@@ -1,0 +1,27 @@
+{
+  "name":"Lawnaholic",
+  "short_name":"Lawnaholic",
+  "description":"Lawn tips and tricks, reviews, and forced humor.",
+  "lang":"en",
+  "start_url":"/",
+  "background_color":"#ffffff",
+  "display":"standalone",
+  "theme_color":"#6ca827",
+  "icons":[
+     {
+        "src":"/assets/icon-48x48.png",
+        "sizes":"48x48",
+        "type":"image/png"
+     },
+     {
+      "src": "/assets/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

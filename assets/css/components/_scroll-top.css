@@ -1,0 +1,48 @@
+.scroll-top {
+	position: fixed;
+	right: var(--gap-lg);
+	bottom: var(--gap-lg);
+	height: 46px;
+	width: 46px;
+	cursor: pointer;
+	display: block;
+	border-radius: var(--global-radius-round);
+	z-index: 100;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(15px);
+  transition: all var(--trans-default);
+  box-shadow: inset 0 0 0 2px var(--color-border);
+  color: var(--color-text-acc-1);
+  background-color: var(--color-bg);
+
+  @mixin attention {
+    color: var(--color-primary);
+
+    .progress-circle path {
+      stroke: var(--color-primary);
+    }
+  }
+
+  &.active-progress {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  i {
+    position: absolute;
+    top: 0;
+    margin: 10px;
+  }
+}
+
+.scroll-top svg path { 
+	fill: none; 
+}
+
+.scroll-top svg.progress-circle path {
+	stroke: var(--color-text-acc-2);
+	stroke-width: 4;
+  transition: all var(--trans-default);
+}

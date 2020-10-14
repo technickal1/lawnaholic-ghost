@@ -1,0 +1,23 @@
+{{!< default}}
+
+{{!-- The main content area on the page --}}
+{{#post}}
+{{> page-hero}}
+
+<div class="container wrapper">
+  <article class="{{post_class}} content-wrap">
+    <div class="content">
+      <h4>{{t "Drop us a line:"}}</h4>
+      <div class="contact-form m-b-lg">
+        <form action="//formspree.io/youremail@domain.com" id="contact-form" class="contact-form clearfix" method="post">
+          <input type="text" name="username" id="username" title="{{t "Name"}}" placeholder="{{t "Name"}}" required>
+          <input type="text" name="email" id="email" title="{{t "Email"}}" class="email" placeholder="{{t "Email"}}" required>
+          <textarea rows="5" name="message" id="message" title="{{t "Message"}}" placeholder="{{t "Message"}}" required></textarea>
+          <input type="text" name="_gotcha" style="display:none">
+          <input class="btn btn--brand" type="submit" name="submit" title="{{t "Send"}}" id="submit" value="{{t "Send"}}">
+        </form>
+      </div>
+    </div>
+  </article>
+</div>
+{{/post}}

@@ -1,0 +1,144 @@
+/*========================================*/
+/* Settings
+/*========================================*/
+:root {
+  /*----------------------------------------*/
+  /* Global values
+  /*----------------------------------------*/
+  --global-max-width: 1280px;
+  --global-radius: 2px;
+  --global-radius-round: 50%;
+  --global-header-position: initial;
+
+  /*--------------------------------------*/
+  /* Colors
+  /*--------------------------------------*/
+  --color-primary: hsl(249,79%,62%);
+  --color-primary-light: hsl(249,79%,67%);
+  --color-primary-dark: hsl(249,79%,52%);
+
+  --color-secondary: hsl(157,90%,49%);
+  --color-secondary-light: hsl(157,90%,54%);
+  --color-secondary-dark: hsl(157,90%,44%);
+
+  /* neutral colors */
+  --color-black: hsl(0, 0%, 0%);
+  --color-dark: hsl(0, 0%, 10%);
+  --color-dark-acc: hsl(0, 0%, 20%); 
+  --color-grey-darker: hsl(0, 0%, 30%);
+  --color-grey-dark: hsl(0, 0%, 40%);
+  --color-grey: hsl(0, 0%, 50%);
+  --color-grey-light: hsl(0, 0%, 60%);
+  --color-grey-lighter: hsl(0, 0%, 70%);
+  --color-light-acc: hsl(0, 0%, 80%);
+  --color-light: hsl(0, 0%, 90%);
+  --color-white: hsl(0, 0%, 100%);
+
+  /* tagging colors */
+  --color-purple: hsl(265, 82%, 57%);
+  --color-red: hsl(351, 77%, 45%);
+  --color-green: hsl(164, 78%, 50%);
+  --color-blue: hsl(200, 100%, 55%);
+  --color-pink: hsl(330, 80%, 43%);
+  --color-yellow: hsl(44, 100%, 53%);
+  --color-royalblue: hsl(221, 84%, 50%);
+  --color-orange: hsl(15, 90%, 63%);
+
+  /* semantic colors */
+  --color-error: hsl(348, 97%, 60%);
+  --color-success: hsl(141, 53%, 53%);
+  --color-warning: hsl(48, 98%, 67%);
+  --color-info: hsl(204, 86%, 54%);
+
+  /* text & background colors */
+  --color-text: var(--color-dark);
+  --color-text-acc-1: var(--color-dark-acc);
+  --color-text-acc-2: var(--color-grey-darker);
+  --color-text-acc-3: var(--color-grey-dark);
+  --color-text-reverse: var(--color-light);
+
+  --color-bg: var(--color-white);
+  --color-bg-acc-1: hsl(0, 0%, 97%);
+  --color-bg-acc-2: hsl(0, 0%, 95%);
+  --color-bg-acc-3: hsl(0, 0%, 92%);
+  --color-bg-reverse: var(--color-dark);
+
+  --color-border: hsl(0, 0%, 91%);
+
+  /*--------------------------------------*/
+  /* Typography
+  /*--------------------------------------*/
+  --font-serif: Times, Georgia, serif;
+  --font-sans: 'Manrope', Tahoma, Arial, sans-serif;
+  --font-mono: Consolas, Monaco,  monospace;
+  --font-size-base: 1rem;
+  --font-weight-100: 100;
+  --font-weight-100: 200;
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-900: 900;
+  --line-height-base: 1.6;
+
+  /*--------------------------------------*/
+  /* Animation
+  /*--------------------------------------*/
+  --trans-name: ease-in-out;
+  --trans-duration: 400ms;
+  --trans-duration-lg: 800ms;
+  --trans-duration-xl: 1200ms;
+  --trans-delay: 100ms;
+  --trans-default: var(--trans-duration) var(--trans-name);
+
+  /*--------------------------------------*/
+  /* Spacing
+  /*--------------------------------------*/
+  --gap: 1em;
+  --gap-rem: 1rem;
+  --gap-xs: calc(var(--gap) * 0.25);
+  --gap-sm: calc(var(--gap) * 0.5);
+  --gap-lg: calc(var(--gap) * 2);
+  --gap-xl: calc(var(--gap) * 4);
+
+  /*--------------------------------------*/
+  /* Breakpoints
+  /*--------------------------------------*/
+  --brakepoint-sm: 36em;
+  --brakepoint-md: 48em;
+  --brakepoint-lg: 62em;
+  --brakepoint-xl: 75em;
+
+  /*--------------------------------------*/
+  /* Grid-system
+  /*--------------------------------------*/
+  --gutter-w: 1rem;
+  --outer-m: 1rem;
+  --gutter-comp: calc(var(--gutter-w) * -1);
+  --half-gutter-w: calc(var(--gutter-w) * 0.5);
+  --container-sm: calc(var(--brakepoint-sm) + var(--gutter-w));
+  --container-md: calc(var(--brakepoint-md) + var(--gutter-w));
+  --container-lg: calc(var(--brakepoint-lg) + var(--gutter-w));
+  --container-xl: calc(var(--brakepoint-xl) + var(--gutter-w));
+}
+
+/*========================================*/
+/* Dark theme settings
+/*========================================*/
+[data-color-scheme="dark"] {
+  --color-text: var(--color-light);
+  --color-text-acc-1: var(--color-light-acc);
+  --color-text-acc-2: var(--color-grey-lighter);
+  --color-text-acc-3: var(--color-grey-light);
+  --color-text-reverse:  var(--color-dark);
+
+  --color-bg: hsl(0, 0%, 6%);  
+  --color-bg-acc-1: hsl(0, 0%, 9%); 
+  --color-bg-acc-2: hsl(0, 0%, 12%); 
+  --color-bg-acc-3: hsl(0, 0%, 15%); 
+  --color-bg-reverse: var(--color-light);
+
+  --color-border: hsl(0, 0%, 20%);
+}

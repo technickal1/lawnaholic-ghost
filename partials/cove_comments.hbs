@@ -1,0 +1,33 @@
+{{#if @labs.members}}
+  <span class="is-hidden" id="cove-count"></span>
+  <div id="cove" class="comments__panel" class="m-b text-acc-2"></div>
+
+  {{#if @member}}
+    <div>{{@member.email}} · <a href="javascript:" data-members-signout>{{t "Log out"}}</a></div>
+  {{else}}
+    <p class="m-b fw-700 text-acc-1 text-lg">{{t "Join the conversation."}}</p>
+    <form data-members-form="signin" id="cove-login" class="flex">
+      <input class="cove-input flex-1 m-0" data-members-email type="email" required="true" placeholder="your@email.com" />
+      <button type="submit" class="btn btn--primary">
+        {{t "Send login link"}}
+      </button>
+      <a tabindex="0" class="notify notify-success js-notify-close">
+        <div class="container wrapper flex flex-cc">
+          <div class="notify__msg flex-1">{{t "Great! Check your inbox and click the link"}}</div> 
+          <div class="notify__close">{{>icon name="x" size="xs"}}</div>
+        </div>
+      </a>
+    </form>
+  {{/if}}
+
+  <script>
+    const Cove = {
+      publication: "9a56f94608ec8169ab6bb801d004f591",
+      contentId: "{{id}}",
+      memberId: "{{@member.uuid}}",
+      memberEmail: "{{@member.email}}"
+    }
+  </script>
+{{/if}}
+
+<script src="https://cdn.cove.chat/comments.js" async></script>

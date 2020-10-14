@@ -1,0 +1,18 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+{{> page-hero}}
+
+<div class="container wrapper">
+  {{#get "tags" limit="all" include="count.posts" order="count.posts desc"}}
+  <div class="row">
+    {{#foreach tags}}
+    <div class="col-xs-12 col-sm-6 col-md-4 m-b-lg">
+      {{> tag-card class="h-100" img=true}}
+    </div>
+    {{/foreach}}
+  </div>
+  {{/get}}
+</div>
+{{/post}}

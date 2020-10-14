@@ -1,0 +1,89 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+{{#if @labs.members}}
+{{> page-hero}}
+
+<div class="container wrapper">
+  <div class="checkout__form">
+    {{!--  --}}
+    <div class="row">
+      {{#unless @member}}
+        <div class="col-xs-12 col-md-6 col-lg-4 m-b-lg">
+          <div class="checkout-plan">
+            <header class="checkout-plan__hdr p-b border-bottom-1">
+              <h3 class="checkout-plan__title">{{t "Free"}}</h3>
+              <div class="checkout-plan__price">
+                <sup>{{@price.currency_symbol}}</sup><strong>0</strong>
+              </div>
+            </header>
+            <div class="checkout-plan__content">
+              <ul class="list--unstyled">
+                <li>{{>icon name="check" size="xs"}}{{t "Access to subscriber posts"}}</li>
+                <li>{{>icon name="check" size="xs"}}{{t "Regular newsletters"}}</li>
+                <li>{{>icon name="check" size="xs"}}{{t "No advertisement"}}</li>
+              </ul>
+              <a class="btn btn--brand btn--sm" href="/signup/">
+                {{t "Subscribe now"}}
+              </a>
+            </div>
+          </div>
+        </div>
+      {{/unless}}
+
+      <div class="col-xs-12 col-md-6 col-lg-4 {{#if @member}}col-lg-offset-2{{/if}} m-b-lg">
+        <div class="checkout-plan">
+          <header class="checkout-plan__hdr p-b border-bottom-1">
+            <h3 class="checkout-plan__title">{{t "Monthly"}}</h3>
+            <div class="checkout-plan__price">
+              <sup>{{@price.currency_symbol}}</sup><strong>{{@price.monthly}}</strong>/{{t "m"}}
+            </div>
+          </header>
+          <div class="checkout-plan__content">
+            <ul class="list--unstyled">
+              <li>{{>icon name="check" size="xs"}}{{t "Full access to all private posts"}}</li>
+              <li>{{>icon name="check" size="xs"}}{{t "Regular updates with new content"}}</li>
+              <li>{{>icon name="check" size="xs"}}{{t "Support independent publishing"}}</li>
+              <li>{{>icon name="check" size="xs"}}{{t "Simple, secure card payment"}}</li>
+              <li>{{>icon name="check" size="xs"}}{{t "Regular newsletters"}}</li>
+              <li>{{>icon name="check" size="xs"}}{{t "No advertisement"}}</li>
+            </ul>
+            <a class="btn btn--brand btn--sm" 
+              href="javascript:void(0)" data-members-plan="Monthly">
+              {{t "Subscribe now"}}
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-xs-12 col-md-6 col-lg-4 m-b-lg">
+        <div class="checkout-plan">
+          <header class="checkout-plan__hdr p-b border-bottom-1">
+            <h3 class="checkout-plan__title">{{t "Yearly"}}</h3>
+            <div class="checkout-plan__price">
+              <sup>{{@price.currency_symbol}}</sup><strong>{{@price.yearly}}</strong>/{{t "y"}}
+            </div>
+          </header>
+          <div class="checkout-plan__content">
+            <ul class="list--unstyled">
+              <li>{{>icon name="check" size="xs"}}{{t "Full access to all private posts"}}</li>
+              <li>{{>icon name="check" size="xs"}}{{t "Regular updates with new content"}}</li>
+              <li>{{>icon name="check" size="xs"}}{{t "Support independent publishing"}}</li>
+              <li>{{>icon name="check" size="xs"}}{{t "Simple, secure card payment"}}</li>
+              <li>{{>icon name="check" size="xs"}}{{t "Regular newsletters"}}</li>
+              <li>{{>icon name="check" size="xs"}}{{t "No advertisement"}}</li>
+              <li>{{>icon name="check" size="xs"}}{{t "One easy payment instead of 12!"}}</li>
+            </ul>
+            <a class="btn btn--brand btn--sm" 
+              href="javascript:void(0)" data-members-plan="Yearly">
+              {{t "Subscribe now"}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+{{/post}}

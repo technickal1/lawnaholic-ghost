@@ -1,0 +1,137 @@
+.tag-list-wrap {
+  position: relative;
+  max-width: calc(100vw - var(--gap-lg));
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 1.5rem;
+    background: linear-gradient(90deg, transparent, var(--color-bg), var(--color-bg));
+  }
+
+  @media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.tag-list {
+  display: flex;
+  overflow-x: auto;
+  position: relative;
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-700);
+  color: var(--color-text-acc-2);
+  text-transform: uppercase;
+  white-space: pre;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tag-item {
+  margin-right: var(--gap);
+
+  &:last-of-type {
+    padding-right: var(--gap-lg);
+  }
+
+  @mixin attention {
+    color: var(--color-text-acc-1);
+  }
+}
+
+.tag-wrap {
+  .tag-card {
+    margin-bottom: var(--gap);
+
+    @media (--mq-md) {
+      margin-bottom: var(--gap-lg);
+    }
+  }
+  
+  @media (--mq-xl) {
+    .tag-card:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.featured-tag {
+  margin-bottom: var(--gap);
+  
+  @media (--mq-md) {
+    margin-bottom: var(--gap-lg);
+  }
+
+  @media (--mq-xl) {
+    margin-bottom: 0;
+  }
+}
+
+.tag-card {    
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: var(--gap);
+  border: 1px solid var(--color-border);
+  border-radius: var(--global-radius);
+  color: var(--color-text-acc-2);
+  transition: box-shadow var(--trans-default);
+  background-color: var(--color-bg-acc-1);
+
+  @media (--mq-md) {
+    padding: 1.5em;
+  }
+
+  &.has-img {
+    padding: var(--gap);
+
+    .tag-card__content {
+      padding: 0 var(--gap-sm);
+      padding-bottom: 0;
+    }
+  }
+
+  &.small-img {
+    .tag-card__img {
+      height: 10rem;
+    }
+  }
+
+  &__img {
+    height: 14rem;
+    margin-bottom: var(--gap);
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  &__count {
+    position: relative;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    font-weight: 800;
+    border: 2px solid var(--color-text-acc-2);
+    border-radius: var(--global-radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__name {
+    font-size: 1rem;
+  }
+
+  @mixin attention {
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,.05);
+  }
+}

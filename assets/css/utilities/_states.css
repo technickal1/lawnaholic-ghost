@@ -1,0 +1,45 @@
+/* States */
+.is-hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.is-in-view {
+  display: block;
+}
+
+/* Lazyload*/
+.lazyload {
+  opacity: 0.75;
+  filter: blur(5px);
+}
+
+.lazyload.loaded {
+  opacity: 1;
+  filter: blur(0);
+  transition: 
+    all var(--trans-default);
+}
+
+.initial.loaded {
+  opacity: 1;
+  filter: blur(0);
+  transition: 
+    all var(--trans-default);
+}
+
+.is-sticky {
+  position: sticky;
+}
+
+.is-fixed {
+  position: fixed;
+}
+
+[data-color-scheme="dark"] {
+  .lazyload.loaded,
+  .initial.loaded {
+    filter: blur(0) brightness(.8) contrast(1.2);
+  }
+}

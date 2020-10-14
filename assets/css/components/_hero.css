@@ -1,0 +1,153 @@
+.hero {
+  position: relative;
+  min-height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gap) 0;
+  border-radius: var(--global-radius);
+  overflow: hidden;
+  background: var(--color-bg-acc-1);
+
+  &.has-img {
+    @media (--mq-md) {
+      min-height: 30rem;
+    }
+  }
+
+  @media (--mq-md) {
+    padding: var(--gap-lg) 0;
+  }
+
+  &__inner {
+    flex-direction: column;
+
+    @media (--mq-md) {
+      flex-direction: row;
+    }
+  }
+
+  &__img {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    object-position: center center;
+    object-fit: cover;
+    border-radius: var(--global-radius);
+    max-height: 20rem;
+    margin-bottom: var(--gap);
+
+    @media (--mq-md) {
+      max-height: 26rem;
+      max-width: 40rem;
+      margin-bottom: 0;
+    }
+
+    &--rnd {
+      width: 10rem;
+      height: 10rem;
+      max-width: 100%;
+      border-radius: 50%;
+      object-position: center center;
+      object-fit: cover;
+
+      @media (--mq-md) {
+        margin-left: var(--gap);
+        width: 15rem;
+        height: 15rem;
+      }
+
+      @media (--mq-lg) {
+        margin-left: var(--gap);
+        width: 20rem;
+        height: 20rem;
+      }
+    }
+  }
+
+  &__content {
+    justify-content: center;
+    margin-bottom: var(--gap-lg);
+    align-items: center;
+
+    @media (--mq-md) {
+      margin-bottom: 0;
+      align-items: flex-start;
+    }
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: var(--gap-xs);
+    text-align: center;
+
+    @media (--mq-md) {
+      text-align: left;
+    }
+  }
+
+  &__descr {
+    max-width: 28rem;
+    color: var(--color-text-acc-2);
+    text-align: center;
+
+    @media (--mq-md) {
+      font-size: 1.1rem;
+      text-align: left;
+    }
+  }
+
+  form {   
+    display: flex;
+    width: 100%;
+    max-width: 25rem;
+    position: relative;
+
+    .btn {
+      border: 1px solid var(--color-border);
+    }
+  }
+
+  input {
+    margin-bottom: 0;
+    background: var(--color-bg);    
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
+    height: 50px;
+    border: 1px solid var(--color-border);
+  }
+
+  button {
+    min-width: 8rem;
+    font-weight: 800;
+    font-size: 0.9rem;    
+    position: absolute;
+    padding: var(--gap);
+    height: 50px;
+    right: 0px;
+    border: none;
+    border-radius: var(--global-radius);    
+    cursor: pointer;
+    color: var(--color-dark);
+    background-color: var(--color-secondary-light);
+
+    @mixin attention {
+      background-color: var(--color-secondary);
+    }
+  }
+
+  .btn {
+    color: var(--color-dark);
+  }
+
+  &.author {
+    .hero__inner {
+      flex-direction: column-reverse;
+
+      @media (--mq-md) {
+        flex-direction: row;
+      }
+    }
+  }
+}

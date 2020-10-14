@@ -1,0 +1,21 @@
+<a class="tag-card tag-{{slug}} {{class}}{{#if img}}{{#if feature_image}} has-img flex-col{{else}} items-end{{/if}}{{/if}}"
+  href="{{url}}" title="{{name}}" aria-label="{{name}}">
+  {{#if img}}
+    {{#if feature_image}}
+      <img class="lazyload tag-card__img"
+        data-srcset="{{img_url feature_image size="xs"}} 100w,
+                {{img_url feature_image size="s"}} 300w,
+                {{img_url feature_image size="m"}} 600w"
+        data-sizes="(max-width: 600px) 50vw, 400px"
+        data-src="{{img_url feature_image size="sm"}}"
+        src="{{> img-placeholder}}"
+        alt="{{name}}"
+      />
+    {{/if}}
+  {{/if}}
+  <div class="tag-card__content items-center flex w-100">
+    <div class="tag-card__name m-0 flex-1 fw-800">{{name}}</div>
+    <div class="tag-card__count"><span>{{count.posts}}</span></div>
+  </div>
+</a>
+

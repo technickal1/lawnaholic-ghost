@@ -1,0 +1,51 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+<div class="container wrapper">
+  {{> post-hero}}
+  <div class="row">
+    <div class="col-xs-12 col-lg-8 col-xl-9">
+      <article class="{{post_class}} content-wrap post-access-{{visibility}} post-with-sidebar">
+        {{#if access}}
+          {{> social-share}}
+        {{/if}}
+        <div class="content">
+          {{#if custom_excerpt}}
+            <p class="context-excerpt text-lg">
+              {{custom_excerpt}}
+            </p>
+          {{/if}}
+          {{#if access}}
+            {{content}}
+
+            {{#if tags}}
+              <hr>
+              <div class="post-tags flex">
+                {{#foreach tags}}
+                  <a class="tag-{{slug}} m-r bg-acc-2 text-sm fw-700" href="{{url}}" 
+                    title="{{name}}" aria-label="{{name}}">#{{name}}</a>
+                {{/foreach}}
+              </div>
+              <hr>
+            {{/if}}
+          {{else}}
+            {{> post-access-cta visibility=visibility}}
+          {{/if}}
+        </div>
+      </article>
+    </div>
+    <div class="col-xs-12 col-lg-4 col-xl-3">
+      {{> sidebar}}
+    </div>
+  </div>
+</div>
+
+{{!-- Include Comments --}}
+{{#if access}}
+  {{> comments}}
+{{/if}}
+
+{{!-- Related posts --}}
+{{> related-posts}}
+{{/post}}

@@ -1,0 +1,57 @@
+.alert {
+  position: relative;
+  background-color: var(--color-bg);
+  color: var(--color-text-acc-2);
+  font-weight: var(--font-weight-600);
+  padding: var(--gap-lg);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-grey-dark);
+  margin-top: var(--gap);
+  margin-bottom: var(--gap-lg);
+  border-radius: var(--global-radius);
+  font-style: italic;
+
+  &:before {
+    content: url(/assets/icons/bell.svg);  
+    position: absolute;     
+    width: 40px;
+    height: 40px;
+    left: -22px;
+    top: -20px;
+    background-color: var(--color-bg);
+    padding: var(--gap-sm);
+    border-radius: var(--global-radius-round);
+  }
+
+  &.info {
+    border-left-color: var(--color-info);
+
+    &:before {
+      content: url(/assets/icons/info.svg);   
+    }
+  }
+
+  &.warning {
+    border-left-color: var(--color-warning);
+
+    &:before {
+      content: url(/assets/icons/alert-triangle.svg);   
+    }
+  }
+
+  &.error {
+    border-left-color: var(--color-error);
+
+    &:before {
+      content: url(/assets/icons/alert-octagon.svg);   
+    }
+  }
+
+  &.success {
+    border-left-color: var(--color-success);
+
+    &:before {
+      content: url(/assets/icons/check-circle.svg);   
+    }
+  }
+}

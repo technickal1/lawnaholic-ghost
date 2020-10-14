@@ -1,0 +1,102 @@
+.social__item {
+  margin-right: var(--gap-sm);
+  padding: var(--gap-sm);
+  background-color: var(--color-bg-acc-3);
+  border-radius: var(--global-radius-round);
+  border: 1px solid transparent;
+  transition: all var(--trans-default);
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  @mixin attention {
+    border-color: var(--color-border);
+    background-color: var(--color-bg-acc-1);
+  }
+}
+
+.social-share {
+  display: flex;
+  margin-bottom: var(--gap-lg);
+
+  a {
+    flex: 1;
+    padding: var(--gap-sm);
+    background-color: var(--color-bg-acc-2);
+    color: var(--color-text-acc-2);
+    border-radius: var(--global-radius);
+    border: 1px solid var(--color-bg-acc-2);
+    margin-right: var(--gap-sm);
+    cursor: pointer;
+
+    @mixin attention {
+      background-color: var(--color-bg);
+      border-color: var(--color-border);
+      color: var(--color-primary);
+      outline: none;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  .icon {
+    margin: 0 auto;
+  }
+
+  .copy-link {
+    position: relative;
+
+    &.has-tooltip {
+      &:before,
+      &:after {
+        visibility: visible;
+        opacity: 1;
+        transition: 
+          visibility var(--trans-default),
+          opacity var(--trans-default);
+      }
+    }
+
+    &:before {
+      content: "";
+      position: absolute;  
+      visibility: hidden;
+      opacity: 0;
+      top: auto;
+      right: 50%;
+      bottom: -12px;
+      margin-right: -5px;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 6px solid var(--color-bg-reverse);
+      transition: 
+          visibility var(--trans-default),
+          opacity var(--trans-default);
+    }
+
+    &:after { 
+      content: attr(data-label); 
+      position: absolute;    
+      visibility: hidden;
+      opacity: 0;
+      padding: var(--gap-sm) var(--gap);
+      border-radius: var(--global-radius);
+      background-color: var(--color-bg-reverse);
+      color: var(--color-text-reverse);
+      font-size: 0.8rem;
+      font-weight: var(--font-weight-semi-bold);
+      top: calc(3 * var(--gap-rem));
+      right: 0;
+      transition: 
+        visibility var(--trans-default),
+        opacity var(--trans-default);
+      
+      @media (--mq-md) {
+        right: 25px;
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<div class="notifications">
+  {{!-- Sign up --}}
+  <a tabindex="0" class="notify notify-signup js-notify-close">
+    <div class="container wrapper flex flex-cc">
+      <div class="notify__msg flex-1">{{t "Great! Next, complete checkout for full access to {sitetitle}" sitetitle=@site.title}}</div> 
+      <div class="notify__close">{{>icon name="x" size="xs"}}</div>
+    </div>
+  </a>
+
+  {{!-- Signin --}}
+  <a tabindex="0" class="notify notify-signin js-notify-close">
+    <div class="container wrapper flex flex-cc">
+      <div class="notify__msg flex-1">{{t "Welcome back! You've successfully signed in"}}</div> 
+      <div class="notify__close">{{>icon name="x" size="xs"}}</div>
+    </div>
+  </a>
+
+  {{!-- Subscribe --}}
+  <a tabindex="0" class="notify notify-subscribe js-notify-close">
+    <div class="container wrapper flex flex-cc">
+      <div class="notify__msg flex-1">{{t "You've successfully subscribed to {sitetitle}" sitetitle=@site.title}}</div> 
+      <div class="notify__close">{{>icon name="x" size="xs"}}</div>
+    </div>
+  </a>
+
+  {{!-- Checkout --}}
+  <a tabindex="0" class="notify notify-checkout js-notify-close">
+    <div class="container wrapper flex flex-cc">
+      <div class="notify__msg flex-1">{{t "Success! Your account is fully activated, you now have access to all content"}}</div> 
+      <div class="notify__close">{{>icon name="x" size="xs"}}</div>
+    </div>
+  </a>
+
+  {{!-- Billing --}}
+  <a tabindex="0" class="notify notify-billing-success js-notify-close">
+    <div class="container wrapper flex flex-cc">
+      <div class="notify__msg flex-1">{{t "Success! Your billing info has been updated"}}</div> 
+      <div class="notify__close">{{>icon name="x" size="xs"}}</div>
+    </div>
+  </a>
+
+  {{!-- Billing cancel --}}
+  <a tabindex="0" class="notify notify-billing-cancel js-notify-close">
+    <div class="container wrapper flex flex-cc">
+      <div class="notify__msg flex-1">{{t "Your billing was not updated"}}</div> 
+      <div class="notify__close">{{>icon name="x" size="xs"}}</div>
+    </div>
+  </a>
+</div>

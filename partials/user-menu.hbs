@@ -1,0 +1,49 @@
+<div class="user-menu js-user-menu">
+  {{!-- Member Links --}}
+  {{#if @labs.members}}
+    {{#if @member}}
+      <div class="member-user">
+        <div class="member-info flex flex-col">
+          <div class="member-name">{{@member.name}}</div>
+          <span class="member-email">{{@member.email}}</span>
+        </div>
+      </div>
+
+      {{#unless @member.paid}}
+        <a class="upgrade-link" href="/membership/" tabindex="0"
+          title="{{t "Upgrade"}}" aria-label="{{t "Upgrade"}}">
+          {{>icon name="trending-up" size="xs"}}{{t "Upgrade"}}
+        </a>
+      {{/unless}}
+
+      <a class="account-link" href="/account/" tabindex="0"
+        title="{{t "Account"}}" aria-label="{{t "Account"}}">
+        {{>icon name="user" size="xs"}}{{t "Account"}}
+      </a>
+
+      <a class="signout-link" href="#signout" tabindex="0"
+        title="{{t "Sign out"}}" aria-label="{{t "Sign out"}}"
+        data-members-signout>
+        {{>icon name="log-out" size="xs"}}{{t "Sign out"}}
+      </a>
+    {{else}}
+      <a class="signup-link" href="/signup/" tabindex="0"
+        title="{{t "Sign up"}}" aria-label="{{t "Sign up"}}">
+        {{>icon name="arrow-up-right" size="xs"}}{{t "Sign up"}}
+      </a>
+      <a class="signin-link" href="/signin/" tabindex="0"
+        title="{{t "Sign in"}}" aria-label="{{t "Sign in"}}">
+        {{>icon name="log-in" size="xs"}}{{t "Sign in"}}
+      </a>
+    {{/if}}
+  {{/if}}
+
+  {{!-- Dark/Light Theme --}}
+  <button class="btn--toggle btn-theme-toggle js-theme-toggle" tabindex="0" 
+    title="{{t "Theme Toggle"}}" aria-label="{{t "Theme Toggle"}}"
+    onclick="toggleTheme()">
+    {{>icon name="moon" size="xs"}}
+    {{>icon name="sun" size="xs"}}
+    <span>{{t "Theme"}}</span>
+  </button>
+</div>

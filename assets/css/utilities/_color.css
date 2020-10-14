@@ -1,0 +1,48 @@
+.color-primary {
+  color: var(--color-primary)
+}
+
+.color-secondary {
+  color: var(--color-secondary);
+}
+
+.color-light {
+  color: var(--color-light);
+}
+
+.color-dark {
+  color: var(--color-dark);
+}
+
+.text-acc-1 {
+  color: var(--color-text-acc-1);
+}
+
+.text-acc-2 {
+  color: var(--color-text-acc-2);
+}
+
+.text-acc-3 {
+  color: var(--color-text-acc-3);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.bg-acc-1 {
+  background-color: var(--color-bg-acc-1);
+}
+
+.bg-acc-2 {
+  background-color: var(--color-bg-acc-2);
+}
+
+.bg-acc-3 {
+  background-color: var(--color-bg-acc-3);
+}
+

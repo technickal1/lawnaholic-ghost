@@ -1,0 +1,54 @@
+{{!< ../default}}
+<div class="signup flex flex-cc">
+  {{#if @member.paid}}
+
+    {{!-- Logged in, paying member: Redirect home --}}
+    <script>window.location = '{{@site.url}}';</script>
+
+  {{else if @member}}
+
+    {{!-- Logged in, paying member: Redirect to account page --}}
+    <script>window.location = '/account';</script>
+    
+  {{else}}
+
+    {{!-- Not logged in: Sign up --}}
+    <div class="signup__content">
+      <a href="/" class="site-brand">
+        {{!-- Add logo or title above  --}}
+        {{#if @site.logo}}
+          {{!-- Site logo --}}
+          <img class="site__logo" 
+            srcset="{{img_url @site.logo size="xs"}} 100w,
+                    {{img_url @site.logo size="s"}} 300w,
+                    {{img_url @site.logo size="m"}} 600w"
+            sizes="(max-width: 1000px) 80vw, 700px"
+            src="{{img_url @site.logo size="s"}}"
+            alt="{{@site.title}}"/>
+        {{else}}
+          {{!-- Site Title --}}
+          <h3 class="site__title m-0 line-height-1">{{@site.title}}</h3>
+        {{/if}}
+      </a>
+
+      {{!-- Sign up form --}}
+      <form class="signup-form flex flex-col flex-cc" data-members-form="signup">
+        <h1 class="signup-title">{{t "Sign up"}}</h1>
+        <p id="signup-descr" class="m-b">{{t "Sign up to get access to premium content"}}</p>
+        <div class="signup-box  w-100 m-b-lg">
+          <input data-members-email type="email" autocomplete="off"
+            placeholder="{{t "Your email address"}}" 
+            aria-labelledby="signup-descr" required/>
+          <button class="btn btn--brand w-100 p" type="submit">{{t "Continue"}}</button>
+        </div>
+        <p class="m-0"><small>{{t "Already have an account?"}} <a href="/signin/">{{t "Sign in"}}</a></small></p>
+        <a tabindex="0" class="notify notify-success js-notify-close">
+          <div class="container wrapper flex flex-cc">
+            <div class="notify__msg flex-1">{{t "Great! Check your inbox and click the link to confirm your subscription"}}</div> 
+            <div class="notify__close">{{>icon name="x" size="xs"}}</div>
+          </div>
+        </a>
+      </form>
+    </div>
+  {{/if}}
+</div>

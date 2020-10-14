@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="{{@site.lang}}" data-grid-columns="3">
+  <head>
+    {{!-- Document Settings --}}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {{!-- Page Meta --}}
+    <title>{{meta_title}}</title>
+
+    {{!-- Mobile Meta --}}
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    {{!-- PWA --}}
+    <link rel="manifest" href="{{asset 'manifest.webmanifest'}}">
+    <meta name="theme-color" content="#6ca827">
+    <link rel="apple-touch-icon" href="{{asset 'icon-192x192.png'}}">
+
+    {{!-- Theme Configuration --}}
+    {{> theme-config}}
+
+    {{!-- Preloading --}}
+    <link rel="preload" href="{{asset 'dist/app.min.js'}}" as="script">
+    <link rel="preload" href="{{asset 'dist/app.min.css'}}" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" as="font" onload="this.onload=null;this.rel='stylesheet'">
+
+    {{!-- No Js --}}
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    </noscript>
+
+    {{!-- Main theme scripts --}}
+    <script async src="{{asset 'dist/app.min.js'}}"></script>
+
+    {{!-- Styles'n'Scripts --}}
+    <link rel="stylesheet" type="text/css" href="{{asset 'dist/app.min.css'}}" />
+    <!--cssential--><style></style><!--/cssential-->
+
+    {{!-- Ghost outputs important style and meta data with this tag --}}
+    {{ghost_head}}
+
+    {{!-- Global scripts for setting values --}}
+    {{> global-scripts}}
+    
+    {{!-- Prerender Posts --}}
+    {{#get "posts" limit="all"}}
+      {{#foreach posts}}
+        <link rel="prerender" href="{{url}}"/>
+      {{/foreach}}
+    {{/get}}
+    
+    {{!-- Prerender Pages --}}
+    {{#get "pages" limit="all"}}
+      {{#foreach pages}}
+        <link rel="prerender" href="{{url}}"/>
+      {{/foreach}}
+    {{/get}}
+  </head>
+  <body class="{{body_class}}">
+    {{!-- Include Search View --}}
+    {{> search}}
+
+    {{!-- Include Menu --}}
+    {{> menu}}
+
+    {{!-- The blog navigation links --}}
+    {{^is "signin, signup"}}
+      {{> header}}
+    {{/is}}
+
+    <main class="main">
+      {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+      {{{body}}}
+    </main>
+
+    {{!-- The footer at the very bottom --}}
+    {{^is "signin, signup"}}
+      {{#if @labs.members}}
+        {{#unless @member}}
+          <div class="section p-t p-b m-0 sub">
+            <div class="container wrapper">
+              {{> subscribe text=(t 'Send') }}
+            </div>
+          </div>
+        {{/unless}}
+      {{/if}}
+
+      {{> footer}}
+
+      {{!-- Scroll Top --}}
+      <div class="scroll-top">
+        <svg class="progress-circle" width="100%" height="100%" viewBox="-1 -1 102 102">
+          <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+        </svg>
+        {{> icon name="arrow-up"}}
+      </div>
+    {{/is}}
+
+    {{!-- Notifications --}}
+    {{> notifications}}
+
+    {{!-- Service Worker for PWA --}}
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js');
+        });
+      }
+    </script>
+
+    {{!-- Ghost outputs important scripts and data with this tag --}}
+    {{ghost_foot}}
+  </body>
+</html>

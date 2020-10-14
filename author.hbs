@@ -1,0 +1,88 @@
+{{!< default}}
+
+{{!-- Author Hero --}}
+{{#author}}
+<section class="section hero border-top-1{{#if profile_image}} has-img{{/if}} author">
+  <div class="container wrapper w-100">
+    <div class="hero__inner flex flex-cc">
+      <div class="hero__content flex flex-col{{#unless profile_image}} flex-cc{{/unless}}">
+        {{!-- Title and description --}}
+        <h1 class="hero__title">{{name}}</h1>
+        <div class="hero__descr m-b">{{bio}}</div>
+        <div class="m-b fw-700">
+          {{plural ../pagination.total empty=(t 'No posts') singular=(t '1 post') plural=(t '% posts')}}
+        </div>
+
+        {{!-- Author social links --}}
+        <div class="hero__social flex">
+          {{#if twitter}}
+            <a href="{{twitter_url}}" target="_blank" title="Twitter" aria-label="Twitter">
+              {{> icon name="twitter" size="sm"}}
+            </a>
+          {{/if}}
+          {{#if facebook}}
+            <a href="{{facebook_url}}" target="_blank" title="Facebook" aria-label="Facebook">
+              {{> icon name="facebook" size="sm"}}
+            </a>
+          {{/if}}
+          {{!-- Author website --}}
+          {{#if website}}
+            <a href="{{website}}" target="_blank" title="Website" aria-label="Website">
+              {{> icon name="link" size="sm"}}
+            </a>
+          {{/if}}
+        </div>
+      </div>
+
+      {{!-- Author profile image --}}
+      {{#if profile_image}}
+        <img class="lazyload hero__img--rnd" 
+          data-srcset="{{img_url profile_image size="s"}} 300w,
+              {{img_url profile_image size="m"}} 600w,
+              {{img_url profile_image size="l"}} 1000w"
+          data-sizes="(max-width: 600px) 200px, 400px"
+          data-src="{{img_url profile_image size="m"}}"
+          src="{{> img-placeholder}}"
+          alt="{{name}}"
+        />
+      {{/if}}
+    </div>
+  </div>
+</section>
+{{/author}}
+
+<div class="container wrapper">
+  {{!-- The main content/post by the author --}}
+  {{#if posts}}
+  <div class="section">
+    <div class="flex flex-cc m-b">
+      <div class="section__title">{{t "Latest Posts"}}</div>
+
+      <div class="flex-1"></div>
+    
+      {{!-- Grid/List buttons --}}
+      <button class="toggle__item btn--grid p-sm m-r-sm js-grid-btn" 
+        aria-label="{{t "Grid"}}" title="{{t "Grid"}}" tabindex="0"
+        onclick="setView('grid')">
+        {{> icon name="grid" size="sm"}}
+      </button>
+      <button class="toggle__item btn--list p-sm js-list-btn" 
+        aria-label="{{t "List"}}" title="{{t "List"}}"
+        onclick="setView('list')">
+        {{> icon name="list" size="sm"}}
+      </button>
+    </div>
+    
+    <div class="grid grid-col-3 post-container">
+      {{#foreach posts visibility="all"}}
+        {{> post-card img=true}}
+      {{/foreach}}
+    </div>
+    <div class="col-xs-12 center-xs m-t-lg">
+      <button class="btn btn--wide btn--shadow btn--brand js-load-more" onclick="loadMorePosts(this)">
+        {{t "Load more posts"}}
+      </button>
+    </div>
+  </div>
+  {{/if}}
+</div>

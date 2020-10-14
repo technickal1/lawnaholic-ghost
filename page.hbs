@@ -1,0 +1,18 @@
+{{!< default}}
+
+{{!-- Everything inside the #post tags pulls data from the post --}}
+{{#post}}
+{{> page-hero}}
+
+<div class="container wrapper">
+  <article class="{{post_class}} content-wrap post-access-{{visibility}}">
+    <div class="content">
+      {{#if access}}
+        {{content}}
+      {{else}}
+        {{> post-access-cta visibility=visibility}}
+      {{/if}}
+    </div>
+  </article>
+</div>
+{{/post}}

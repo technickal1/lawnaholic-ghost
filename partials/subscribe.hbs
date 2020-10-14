@@ -1,0 +1,27 @@
+<div class="subscribe flex flex-col flex-cc">
+  <div class="subscribe__title m-b fw-800">{{t "Subscribe"}}</div>
+
+  <div class="subscribe__content m-b">
+    <div class="subscribe__descr m-b" id="post-subscribe">
+      {{t "Join the newsletter to get the latest updates."}}
+    </div>
+    <form data-members-form="subscribe">
+      <input data-members-email aria-labelledby="post-subscribe" 
+        type="email" placeholder="{{t "Your email address"}}" required/>
+      <button class="btn btn--brand" type="submit" title="{{t "Subscribe"}}" 
+        aria-label="{{t "Subscribe"}}">
+        {{#if text}}
+          {{text}}
+        {{else}}
+          {{>icon name="send"}}
+        {{/if}}
+      </button>
+      <a tabindex="0" class="notify notify-success js-notify-close">
+        <div class="container wrapper flex flex-cc">
+          <div class="notify__msg flex-1">{{t "Great! Check your inbox and click the link to confirm your subscription"}}</div> 
+          <div class="notify__close">{{>icon name="x" size="xs"}}</div>
+        </div>
+      </a>
+    </form>
+  </div>
+</div>

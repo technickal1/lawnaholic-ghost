@@ -1,0 +1,19 @@
+{{!-- Blog menu --}}
+<div class="menu" id="menu">
+  <div class="flex flex-1 end-xs">
+    <button tabindex="0" class="menu--close js-menu-close"
+      title="{{t "Close"}}" aria-label="{{t "Close"}}">
+        {{>icon name="x" size="sm"}}
+    </button>
+  </div>
+  <div class="w-100 text-sm">
+    <div class="menu__main border-top-1">
+      {{navigation}}
+    </div>
+    {{#if @site.secondary_navigation}}
+    <div class="menu__secondary">
+      {{navigation type="secondary"}}
+    </div>
+    {{/if}}
+  </div>
+</div>

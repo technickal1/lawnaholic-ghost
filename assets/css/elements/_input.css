@@ -1,0 +1,44 @@
+/* Input */
+/* input[type=color],
+input[type=date],
+input[type=datetime-local],
+input[type=datetime],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week], */
+input,
+select,
+textarea {
+  width: 100%;
+  display: block;
+  padding: var(--gap);
+  margin-bottom: var(--gap);
+  border: none;
+  box-shadow: 0 0 0 1px var(--color-border);
+  border-radius: var(--global-radius);
+  outline: 0;
+  line-height: initial;
+  background-color: transparent;
+  font-size: var(--font-size-base);
+  font-family: var(--font-sans);
+  color: inherit;
+  /* transition: var(--trans-default); */
+
+  @mixin attention {
+    box-shadow: 0 0 0 1px var(--color-primary);
+  }
+
+  &::-webkit-input-placeholder,
+  &:-ms-input-placeholder,
+  &::placeholder { 
+    color: var(--color-text-acc-3);
+    font-weight: var(--font-weight-400);
+  }
+}

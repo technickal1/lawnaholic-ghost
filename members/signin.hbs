@@ -1,0 +1,47 @@
+{{!< ../default}}
+
+{{!-- <div class="container wrapper"> --}}
+  <div class="signin flex flex-cc">
+    {{#if @member}}
+      {{!-- Logged in: Redirect to home --}}
+      <script>window.location = '{{@site.url}}';</script>
+    {{else}}
+      <div class="signin__content">
+        <a href="/" class="site-brand">
+          {{!-- Add logo or title above  --}}
+          {{#if @site.logo}}
+            {{!-- Site logo --}}
+            <img class="site__logo" 
+              srcset="{{img_url @site.logo size="xs"}} 100w,
+                      {{img_url @site.logo size="s"}} 300w,
+                      {{img_url @site.logo size="m"}} 600w"
+              sizes="(max-width: 1000px) 80vw, 700px"
+              src="{{img_url @site.logo size="s"}}"
+              alt="{{@site.title}}"/>
+          {{else}}
+            {{!-- Site Title --}}
+            <h3 class="site__title m-0 line-height-1">{{@site.title}}</h3>
+          {{/if}}
+        </a>
+        {{!-- Not logged in: Signin form --}}
+        <form class="signin-form flex flex-col flex-cc" data-members-form="signin">
+          <h1 class="signin-title">{{t "Sign in"}}</h1>
+          <p id="signin-descr" class="m-b">{{t "Sign into your account again for full access"}}</p>
+          <div class="signin-box w-100 m-b-lg">
+            <input data-members-email type="email" autocomplete="off"
+              placeholder="{{t "Your email address"}}" 
+              aria-labelledby="signin-descr" required/> 
+            <button class="btn btn--brand w-100 p" type="submit">{{t "Send login link"}}</button>
+          </div>
+          <p class="m-0"><small>{{t "Don't have an account yet?"}} <a href="/signup/">{{t "Sign up"}}</a></small></p>
+          <a tabindex="0" class="notify notify-success js-notify-close">
+            <div class="container wrapper flex flex-cc">
+              <div class="notify__msg flex-1">{{t "Great! Check your inbox and click the link"}}</div> 
+              <div class="notify__close">{{>icon name="x" size="xs"}}</div>
+            </div>
+          </a>
+        </form>
+      </div>
+    {{/if}}
+  </div>
+{{!-- </div> --}}

@@ -1,0 +1,46 @@
+.comments {
+  background-color: var(--color-bg-acc-1);
+  padding: var(--gap-lg) 0;
+  
+  &__panel {
+    max-width: 40rem;
+    width: 100%;
+  }
+
+  @media (--mq-lg) {
+    padding: var(--gap-xl) 0;
+  }
+}
+
+.cove-input {
+  box-shadow: none!important;
+  border-color: var(--color-border); 
+  margin-bottom: 0 !important;
+  min-width: 10rem;
+  margin-right: 1em!important;
+}
+
+.cove-button {
+  background-color: var(--color-primary)!important;
+  border: 1px solid var(--color-primary)!important;
+  color: var(--color-white)!important;
+  border-radius: var(--global-radius)!important;
+  font-weight: var(--font-weight-700);
+
+  @mixin attention {
+    background-color: var(--color-primary-dark)!important;
+    border-color: var(--color-primary-dark)!important;
+    color: var(--color-white)!important;
+    box-shadow: none!important;
+  }
+}
+
+#cove-input-name,
+#cove-input-body {
+  margin-bottom: var(--gap-sm)!important;
+}
+
+#cove-input-name {
+  margin-right: 0!important;
+  margin-left: 0!important;
+}

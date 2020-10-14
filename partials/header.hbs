@@ -1,0 +1,82 @@
+{{!-- Site header --}}
+<header class="header">
+  <div class="container wrapper">
+    <div class="row">
+      <div class="col-xs-6 col-md-4 col-lg-3">
+        {{!-- Site logo or title --}}
+        <a class="header__brand" href="{{@site.url}}">
+          {{#if @site.logo}}
+            {{!-- Site logo --}}
+            <img class="header__logo" 
+              srcset="{{img_url @site.logo size="s"}} 300w,
+                      {{img_url @site.logo size="m"}} 600w"
+              sizes="(max-width: 1000px) 80vw, 700px"
+              src="{{img_url @site.logo size="s"}}"
+              alt="{{@site.title}}"/>
+          {{else}}
+            {{!-- Site Title --}}
+            <h3 class="header__title m-0">{{@site.title}}</h3>
+          {{/if}}
+        </a>
+      </div>
+
+      <div class="col-md-4 col-lg-6 middle-xs">
+        <div class="header__menu flex flex-cc">
+          {{navigation}}
+        </div>
+      </div>
+
+      <div class="col-xs-6 col-md-4 col-lg-3 header__actions">
+        {{!-- Theme Toggle --}}
+        <button class="header__theme--toggle btn-theme-toggle js-theme-toggle" tabindex="0" 
+          title="{{t "Theme Toggle"}}" aria-label="{{t "Theme Toggle"}}"
+          type="button" onclick="toggleTheme()">
+          {{>icon name="moon" size="sm"}}
+          {{>icon name="sun" size="sm"}}
+        </button>
+
+        {{!-- Search Button --}}
+        <button class="header__search flex-cc js-search-open" tabindex="0" 
+            type="button" title="{{t "Search"}}" aria-label="{{t "Search"}}">
+          {{>icon name="search" size="sm"}}
+        </button>
+
+        {{!-- Menu Button --}}
+        <button class="header__menu--open flex-cc js-menu-open" tabindex="0" 
+          type="button" title="{{t "Menu"}}" aria-label="{{t "Menu"}}">
+          {{>icon name="menu" size="sm"}}
+        </button>
+
+        {{!-- Sign up Button --}}
+        {{#if @labs.members}}
+          {{#if @member.paid}}
+          {{else if @member}}
+            <a class="upgrade-link" href="/membership/">{{t "Upgrade"}}{{>icon name="trending-up" size="xs" class="m-l-sm"}}</a>
+          {{else}}
+            <a class="signin-link" href="/signin/">{{t "Sign In"}}</a>
+            <a class="signup-link header-cta" href="/signup/">{{t "Sign Up"}} {{> icon name="arrow-right" size="xs" class="m-l-sm"}}</a>
+          {{/if}}
+        {{/if}}
+
+        {{!-- User Menu on Mobile --}}
+        <div class="header__user-wrap{{#if @member}} member {{else}} non-member {{/if}}m-l-sm">
+          <button class="header__user flex-cc js-user" tabindex="0" type="button" 
+              title="{{#if @member}}{{customer.name}}{{else}}{{t "User Menu"}}{{/if}}" 
+              aria-label="{{#if @member}}{{customer.name}}{{else}}{{t "User Menu"}}{{/if}}">
+            {{#if @member}}
+              <img class="header__user-avatar" 
+                srcset="{{img_url @member.avatar_image size="xs"}} 100w,
+                        {{img_url @member.avatar_image size="s"}} 300w"
+                sizes="(max-width: 1000px) 80vw, 700px"
+                src="{{img_url @member.avatar_image size="xs"}}"
+                alt="{{@member.name}}"/>
+            {{else}}
+              {{>icon name="user" size="sm"}}
+            {{/if}}
+          </button>
+          {{>user-menu}}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,42 @@
+{{!-- Site footer --}}
+<footer class="footer">
+  <div class="container wrapper">
+    <div class="footer__top p-t">
+      <div class="row p-t border-bottom-1">
+        <div class="col-xs-12 col-md-2">
+          <div class="footer__title m-b-sm">{{t "Navigation"}}</div>
+          {{navigation}}
+        </div>
+        <div class="col-xs-12 col-md-2">
+          <div class="footer__title m-b-sm">{{t "Tags"}}</div>
+          {{#get "tags" order="count.posts desc" limit="5"}}
+            <div class="footer__tags flex flex-col m-b">
+              {{#foreach tags}}
+                <a href="{{url}}">{{name}}</a>
+              {{/foreach}}
+            </div>
+          {{/get}}
+        </div>
+        <div class="col-xs-12 col-md-2">
+          {{#if @site.secondary_navigation}}
+            <div class="footer__title m-b-sm">{{t "Quick links"}}</div>
+            {{navigation type="secondary"}}
+          {{/if}}
+        </div>
+        <div class="col-xs-12 col-md-2">
+        </div>
+        <div class="col-xs-12 col-md-4 m-b">
+          <div class="footer__title m-b-sm">{{@site.title}}</div>
+          <div class="m-b">{{@site.description}}</div>
+          {{> social-media}}
+        </div>
+      </div>
+    </div>
+    {{!-- Footer Bottom --}}
+    <div class="footer__bottom p-t p-b">
+      &copy;{{date format="YYYY"}}&nbsp;<a href="{{@site.url}}">{{@site.title}}</a>.
+      &nbsp;{{t "Published with"}}&nbsp;<a href="https://ghost.org">Ghost</a> 
+      &nbsp;&&nbsp;<a href="https://bironthemes.com/themes/joben-ghost/">Joben</a>.
+    </div>
+  </div>
+</footer>
