@@ -1,0 +1,16 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy Theme
+on:
+  push:	
+    branches:	
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - uses: TryGhost/action-deploy-theme@v1.0.0
+        with:
+          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
+          api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
