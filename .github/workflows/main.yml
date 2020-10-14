@@ -1,5 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
+# Setup from https://ghost.org/integrations/github/
 name: Deploy Theme
 on:
   push:	
